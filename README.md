@@ -1,4 +1,4 @@
-*Bytingshark* - user.js who will try to show current song file size. Works on all modern browsers like Firefox, Google Chrome, Opera and Safari.
+__Bytingshark__ - user.js who will try show to you currently playing songs file size. Works on all modern browsers like Firefox, Google Chrome, Opera and (maybe) Safari.
 
 Install
 =======
@@ -6,20 +6,20 @@ Install
 Firefox
 -------
 
-To use Bytingshark on Firefox you will need to install [Greasemonkey](https://addons.mozilla.org/en-US/firefox/addon/greasemonkey/) add-on. After that just open bytingshark.user.js and install it.
+You will need to install [Greasemonkey](https://addons.mozilla.org/en-US/firefox/addon/greasemonkey/) add-on. After that just open *bytingshark.user.js* and install it.
 
 Google Chrome
 -------------
 
-Just open bytingshark.user.js and it should prompt install wizard.
+Just open *bytingshark.user.js* and it should prompt install wizard.
 
 Opera
 -----
 
-Copy bytingshark.user.js into User JavaScript folder. If you don't know where it's located (or haven't set it yet):
+Copy *bytingshark.user.js* script into User JavaScript folder. If you don't know where yours located at (or haven't added it yet):
 
 1.	Goto Preferences > Advanced > Content > JavaScript Options ...
-2.	There will be field named "User JavaScript folder", set it where you putted bytingshark.user.js script.
+2.	There will be field named "User JavaScript folder", set it where you putted *bytingshark.user.js* script.
 
 Safari (might work, too lazy for test)
 --------------------------------------
