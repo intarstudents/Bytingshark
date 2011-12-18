@@ -6,35 +6,33 @@
 // @include        http://grooveshark.com/*
 // ==/UserScript==
 
-function GM_wait(){
-	if (typeof unsafeWindow.Grooveshark == "undefined"){
+function Bytingshark(){
+	if (typeof Grooveshark == "undefined"){
 
-		setTimeout(GM_wait, 1000);
+		setTimeout(Bytingshark, 1000);
 
 	}else{
 
-		unsafeWindow.Grooveshark.setSongStatusCallback(function(){
-			var song_size = unsafeWindow.Grooveshark._lastStatus.bytesTotal;
+		Grooveshark.setSongStatusCallback(function(){
+			var song_size = Grooveshark._lastStatus.bytesTotal;
 			var size_element = null;
 
 			if (song_size > 0){
 
-				if ((size_element = unsafeWindow.document.getElementById("bytingshark")) == null){
+				if ((size_element = document.getElementById("bytingshark")) == null){
 					size_element = document.createElement("span");
 					size_element.setAttribute("id", "bytingshark");
 					size_element.style.marginLeft = "10px";
 				}
 
 				size_element.innerHTML = formatBytes(song_size, 2);
-				unsafeWindow.document.getElementById("playerDetails_current_song").appendChild(size_element);
+				document.getElementById("playerDetails_current_song").appendChild(size_element);
 
 			}
 		});
 
 	}
 }
-
-GM_wait();
 
 // http://stackoverflow.com/questions/4258025/php-format-bytes-translation-to-javascript/4258080#4258080
 
@@ -47,3 +45,7 @@ function formatBytes(bytes, precision) {
 	precision = (typeof(precision) == 'number' ? precision : 0);
 	return (Math.round(bytes * Math.pow(10, precision)) / Math.pow(10, precision)) + ' ' + units[pow];
 }
+
+var s = document.createElement("script");
+s.innerHTML = Bytingshark + formatBytes + " Bytingshark();";
+document.body.appendChild(s);
