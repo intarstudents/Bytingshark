@@ -1,0 +1,9 @@
+This is my latest, handy weekend project for Grooveshark – Bytingshark. The main goal of it was to be able easily see playing songs mp3 file size. From that you can assume files sound quality and that just what doctor prescribed.
+
+What you will need for this to work:
+
+    Firefox
+    Greasemonkey
+    bytingshark.user.js
+
+Enjoy (but be aware, it might contain some bugs)!
