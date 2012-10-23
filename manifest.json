@@ -1,0 +1,14 @@
+{
+   "content_scripts": [ {
+      "exclude_globs": [  ],
+      "exclude_matches": [  ],
+      "include_globs": [ "http://preview.grooveshark.com/*", "http://grooveshark.com/*" ],
+      "js": [ "bytingshark.user.js" ],
+      "matches": [ "http://*/*", "https://*/*" ],
+      "run_at": "document_idle"
+   } ],
+   "description": "Add missing file size UI to Grooveshark!",
+   "name": "Bytingshark",
+   "version": "2.0",
+   "manifest_version": 2
+}

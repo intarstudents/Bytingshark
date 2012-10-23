@@ -1,5 +1,7 @@
 __Bytingshark__ - user.js who will try show to you currently playing songs file size. Works on all modern browsers like Firefox, Google Chrome, Opera and (maybe) Safari.
 
+__P.S.__ I haven't tested newest version (2012.10.23) in all modern browsers. And some act strange for no apparent reason (Opera). May come back to it, some other day.
+
 Install
 =======
 
@@ -11,7 +13,7 @@ You will need to install [Greasemonkey](https://addons.mozilla.org/en-US/firefox
 Google Chrome
 -------------
 
-Just open *bytingshark.user.js* and it should prompt install wizard.
+Open [Tools > Extensions](chrome://chrome/extensions/) and enable 'Developer mode'. Then use 'Load unpacked extension...'.
 
 Opera
 -----

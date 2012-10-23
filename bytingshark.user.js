@@ -13,22 +13,85 @@ function Bytingshark(){
 
 	}else{
 
-		Grooveshark.setSongStatusCallback(function(){
-			var song_size = Grooveshark._lastStatus.bytesTotal;
-			var size_element = null;
+		// Find out app version
+		var gs_app = typeof Grooveshark._lastStatus == "undefined" && typeof GS.Services.SWF != "undefined" ? 2 : 1;
 
-			if (song_size > 0){
+		// We only need this CSS for new version of Grooveshark
+		// http://stackoverflow.com/questions/524696/how-to-create-a-style-tag-with-javascript
+		if (gs_app == 2){
+			var css_content = "\
+				#bytingshark {\
+					display: none\
+				}\
+				.has-songs #bytingshark {\
+					background: #1B1B1B;\
+					font-size: 10px;\
+					line-height: 10px;\
+					color: #FFFFFF;\
+					padding: 2px;\
+					opacity: 0.7;\
+					width: 40px;\
+					text-align: center;\
+					position: absolute;\
+					display: block;\
+				}",
+				head = document.getElementsByTagName('head')[0],
+				style = document.createElement('style');
 
-				if ((size_element = document.getElementById("bytingshark")) == null){
-					size_element = document.createElement("span");
-					size_element.setAttribute("id", "bytingshark");
-					size_element.style.marginLeft = "10px";
+			style.type = 'text/css';
+			if(style.styleSheet){
+				style.styleSheet.cssText = css_content;
+			}else{
+				style.appendChild(document.createTextNode(css_content));
+			}
+
+			head.appendChild(style);
+		}
+
+		Grooveshark.setSongStatusCallback(function(song){
+
+			// Only update when song started playing
+			if (song.status != "playing") return;
+			
+			if (gs_app == 1){
+
+				// Old way
+				var song_size = Grooveshark._lastStatus.bytesTotal;
+				var size_element = null;
+
+				if (song_size > 0){
+
+					if ((size_element = document.getElementById("bytingshark")) == null){
+						size_element = document.createElement("span");
+						size_element.setAttribute("id", "bytingshark");
+						size_element.style.marginLeft = "10px";
+					}
+
+					size_element.innerHTML = formatBytes(song_size, 2);
+					document.getElementById("playerDetails_current_song").appendChild(size_element);
+
 				}
 
-				size_element.innerHTML = formatBytes(song_size, 2);
-				document.getElementById("playerDetails_current_song").appendChild(size_element);
+			}else if (gs_app = 2){
+
+				// New way
+				var playback_status = GS.Services.SWF.getPlaybackStatus();
+				var song_size = playback_status.bytesTotal != null ? playback_status.bytesTotal : null;
+
+				var size_element = null;
+
+				if ((size_element = document.getElementById("bytingshark")) == null && song_size > 0){
+					size_element = document.createElement("div");
+					size_element.setAttribute("id", "bytingshark");
+					document.getElementById("now-playing").appendChild(size_element);
+				}
+
+				if (size_element != null){
+					size_element.innerHTML = (song_size != null && song_size > 0 ? formatBytes(song_size, 1) : "");
+				}
 
 			}
+
 		});
 
 	}
